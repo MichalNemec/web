@@ -1,0 +1,61 @@
+.flex {
+    display: flex;
+}
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.flex-justify-content-space-between {
+    justify-content: space-between;
+}
+
+.clockwise-90 {
+    transform: rotate(-90deg) scale(-1);
+    bottom: calc(70px + 10px);
+}
+.shadow {
+    box-shadow: 10px 30px 50px 0 rgba(0,0,0,.1);
+}
+
+.vertical-sub {
+    vertical-align: sub;
+}
+
+.padding-5 {
+    padding: 0px 5rem;
+}
+
+.uk-button-icon {
+    padding: 10px 25px;
+    font-size: 1.5rem;
+}
+
+.uk-section-dark {
+    background-color: #111;
+}
+
+.uk-section-dark a{
+    color: #888;
+    padding: 10px 30px;
+    transition: all .3s ease-in-out;
+}
+
+.uk-section-dark a:hover{
+    color: #f22613;
+    padding: 10px 30px;
+    text-decoration: none;
+}
+
+.alert {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+}
+
+.form-group .uk-button-text {
+    padding: 0px 30px;
+}
+
+.content {
+    min-height: 78.5vh;
+}
