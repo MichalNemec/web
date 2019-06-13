@@ -366,3 +366,13 @@ section + section {
 .uk-offcanvas-reveal .uk-nav-sub ul {
     padding-left: 15px;
 }
+
+.cart-block {
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    padding: 15px 30px;
+    background: white;
+    border: 1px solid #dddddd;
+    border-top: none;
+}

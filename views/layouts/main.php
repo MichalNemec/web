@@ -30,6 +30,7 @@ AppAsset::register($this);
 
 <?= Alert::widget() ?>
 <div class="wrapper">
+    <?= $this->render('_cart-block'); ?>
     <?= $this->render('_sidenav'); ?>
     <div uk-height-viewport="expand: true">
         <div class="main">
