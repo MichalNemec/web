@@ -79,7 +79,7 @@ p .uk-label-danger {
     font-weight: 800;
     transform-origin: 45% 110%;
     width: 162px;
-    color: #f22613;
+    color: #96281b;
     transition: all .3s ease-in-out;
 }
 
@@ -186,7 +186,7 @@ section + section {
 
 .uk-dotnav>.uk-active>* {
     background-color: rgba(102,102,102,.6);
-    border: 1px solid #f22613;
+    border: 1px solid #96281b;
 }
 
 .scroll-info span .fas{
@@ -204,7 +204,7 @@ section + section {
 }
 
 .uk-divider-small.colored::after {
-    border-top: 2px solid #f22613;
+    border-top: 2px solid #96281b;
 }
 
 .img-bg {
@@ -270,15 +270,15 @@ section + section {
 
 .uk-button.uk-button-danger {
     background-color: transparent;
-    border: 2px solid #f22613;
-    color: #f22613;
+    border: 2px solid #96281b;
+    color: #96281b;
     font-weight: bold;
     transition: all .3s ease-in-out;
 }
 
 .uk-button.uk-button-danger:hover {
-    background-color: #f22613;
-    border: 2px solid #f22613;
+    background-color: #96281b;
+    border: 2px solid #96281b;
     color: white;
 }
 
@@ -314,11 +314,11 @@ section + section {
     color: #000000;
 }
 .uk-link, a:hover {
-    color: #f22613;
+    color: #96281b;
     text-decoration: none;
 }
 .breadcrumb > .active {
-    color: #f22613;
+    color: #96281b;
     font-weight: bold;
 }
 
@@ -358,7 +358,7 @@ section + section {
     right: 100%;
     width: 100%;
     height: 10px;
-    background: #f22613;
+    background: #96281b;
 
     pointer-events: none;
 }
