@@ -116,7 +116,7 @@ class Categories extends \yii\db\ActiveRecord
     public function getParentTitle()
     {
         if($this->parent_id != null) {
-            return $this->parent_id->title;
+            return $this->parent->name;
         }
 
         return '';
