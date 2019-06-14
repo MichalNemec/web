@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "roles".
@@ -50,5 +51,12 @@ class Roles extends \yii\db\ActiveRecord
     public static function getAllRoles()
     {
         return self::find()->all();
+    }
+
+    public static function getAllRoleIds()
+    {
+        $row = self::find()->select('id')->all();
+
+        return ArrayHelper::getColumn($row, 'id');
     }
 }
