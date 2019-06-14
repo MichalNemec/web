@@ -11,6 +11,8 @@ use app\models\Categories;
  */
 class CategoriesSearch extends Categories
 {
+    public $searchQuery;
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +20,7 @@ class CategoriesSearch extends Categories
     {
         return [
             [['id', 'parent_id'], 'integer'],
-            [['name', 'created_at', 'updated_at'], 'safe'],
+            [['name', 'created_at', 'updated_at', 'searchQuery'], 'safe'],
         ];
     }
 
@@ -65,6 +67,13 @@ class CategoriesSearch extends Categories
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
+
+        if($this->searchQuery) {
+            $query->andFilterWhere([
+                'or',
+                ['like', 'name', $this->searchQuery],
+            ]);
+        }
 
         return $dataProvider;
     }

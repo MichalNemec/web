@@ -11,6 +11,8 @@ use app\models\Menu;
  */
 class MenuSearch extends Menu
 {
+    public $searchQuery;
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +20,7 @@ class MenuSearch extends Menu
     {
         return [
             [['id', 'parent_id'], 'integer'],
-            [['title', 'slug', 'text'], 'safe'],
+            [['title', 'slug', 'text', 'searchQuery'], 'safe'],
         ];
     }
 
@@ -66,6 +68,15 @@ class MenuSearch extends Menu
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'text', $this->text]);
+
+        if($this->searchQuery) {
+            $query->andFilterWhere([
+                'or',
+                ['like', 'title', $this->searchQuery],
+                ['like', 'slug', $this->searchQuery],
+                ['like', 'text', $this->searchQuery],
+            ]);
+        }
 
         return $dataProvider;
     }

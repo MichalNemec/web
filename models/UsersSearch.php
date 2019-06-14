@@ -14,6 +14,7 @@ class UsersSearch extends Users
 
     public $outputRole;
     public $fullName;
+    public $searchQuery;
 
     /**
      * {@inheritdoc}
@@ -22,7 +23,7 @@ class UsersSearch extends Users
     {
         return [
             [['id', 'status'], 'integer'],
-            [['email', 'auth_key', 'password_hash', 'password_reset_token', 'verification_token', 'fullName', 'created_at', 'updated_at'], 'safe'],
+            [['email', 'auth_key', 'password_hash', 'password_reset_token', 'verification_token', 'fullName', 'created_at', 'updated_at', 'searchQuery'], 'safe'],
         ];
     }
 
@@ -95,6 +96,16 @@ class UsersSearch extends Users
             ['like', 'last_name', $this->fullName],
             ['like', 'first_name', $this->fullName],
         ]);
+
+
+
+        if($this->searchQuery) {
+            $query->andFilterWhere([
+                'or',
+                ['like', 'last_name', $this->searchQuery],
+                ['like', 'first_name', $this->searchQuery],
+            ]);
+        }
 
         return $dataProvider;
     }
