@@ -3,13 +3,16 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "tags".
  *
  * @property string $id
  * @property string $name
- * @property string $inserted_at
+ * @property string $created_at
  * @property string $updated_at
  */
 class Tags extends \yii\db\ActiveRecord
@@ -28,8 +31,9 @@ class Tags extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'inserted_at', 'updated_at'], 'required'],
-            [['inserted_at', 'updated_at'], 'safe'],
+            [['name'], 'required'],
+            ['name', 'unique'],
+            [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -42,7 +46,7 @@ class Tags extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('model', 'ID'),
             'name' => Yii::t('model', 'Name'),
-            'inserted_at' => Yii::t('model', 'Inserted At'),
+            'created_at' => Yii::t('model', 'Inserted At'),
             'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }

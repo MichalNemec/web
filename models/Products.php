@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+use yii\validators\UniqueValidator;
 
 /**
  * This is the model class for table "products".
@@ -16,8 +19,10 @@ use Yii;
  * @property string $discount_price
  * @property int $quantity
  * @property int $taxable
- * @property string $inserted_at
+ * @property string $created_at
  * @property string $updated_at
+ * @property int $active
+ * @property int $shipping_id
  *
  * @property ProductCategories[] $productCategories
  * @property Categories[] $categories
@@ -41,7 +46,7 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sku', 'name', 'product_status_id', 'inserted_at', 'updated_at'], 'required'],
+            [['name', 'product_status_id'], 'required'],
             [['description'], 'string'],
             [['product_status_id', 'quantity', 'taxable'], 'integer'],
             [['regular_price', 'discount_price'], 'number'],
@@ -66,8 +71,10 @@ class Products extends \yii\db\ActiveRecord
             'discount_price' => Yii::t('model', 'Discount Price'),
             'quantity' => Yii::t('model', 'Quantity'),
             'taxable' => Yii::t('model', 'Taxable'),
-            'inserted_at' => Yii::t('model', 'Inserted At'),
+            'created_at' => Yii::t('model', 'Inserted At'),
             'updated_at' => Yii::t('model', 'Updated At'),
+            'active' => Yii::t('model', 'Active'),
+            'shipping_id' => Yii::t('model', 'Shippin ID'),
         ];
     }
 
