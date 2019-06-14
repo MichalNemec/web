@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\validators\UniqueValidator;
@@ -13,6 +14,7 @@ use yii\validators\UniqueValidator;
  * @property string $id
  * @property string $sku
  * @property string $name
+ * @property string $slug
  * @property string $description
  * @property string $product_status_id
  * @property string $regular_price
@@ -32,6 +34,7 @@ use yii\validators\UniqueValidator;
  */
 class Products extends \yii\db\ActiveRecord
 {
+    public $tagsFilled;
     /**
      * {@inheritdoc}
      */
@@ -59,6 +62,11 @@ class Products extends \yii\db\ActiveRecord
                 'updatedAtAttribute' => 'updated_at',
                 'value' => new Expression('NOW()'),
             ],
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'name',
+                'slugAttribute' => 'slug',
+            ],
             'image' => [
                 'class' => 'rico\yii2images\behaviors\ImageBehave',
             ]
@@ -83,7 +91,7 @@ class Products extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['product_status_id', 'quantity', 'taxable', 'active', 'shipping_id'], 'integer'],
             [['regular_price', 'discount_price'], 'number'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at', 'slug'], 'safe'],
             [['sku', 'name'], 'string', 'max' => 255],
             ['sku', 'unique'],
             [['product_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductStatuses::className(), 'targetAttribute' => ['product_status_id' => 'id']],
@@ -91,6 +99,13 @@ class Products extends \yii\db\ActiveRecord
             [['name', 'description'], 'required', 'on' => 'step1'],
             [['product_status_id'], 'required', 'on' => 'step12'],
         ];
+    }
+
+    public function scenarios() {
+        $scenarios = parent::scenarios();
+        $scenarios['step1'] = ['name','description'];
+        $scenarios['step2'] = ['product_status_id'];
+        return $scenarios;
     }
 
     /**
@@ -102,6 +117,7 @@ class Products extends \yii\db\ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'sku' => Yii::t('model', 'Sku'),
             'name' => Yii::t('model', 'Name'),
+            'slug' => Yii::t('model', 'Slug'),
             'description' => Yii::t('model', 'Description'),
             'product_status_id' => Yii::t('model', 'Product Status ID'),
             'regular_price' => Yii::t('model', 'Regular Price'),
