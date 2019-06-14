@@ -65,4 +65,9 @@ class Tags extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
+
+    public static function getAllTags()
+    {
+        return ArrayHelper::map(self::find()->all(), 'id', 'name');
+    }
 }

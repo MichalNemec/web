@@ -120,6 +120,14 @@ class Products extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getProductVariants()
+    {
+        return $this->hasMany(ProductVariants::className(), ['product_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getTags()
     {
         return $this->hasMany(Tags::className(), ['id' => 'tag_id'])->viaTable('product_tags', ['product_id' => 'id']);
@@ -131,5 +139,13 @@ class Products extends \yii\db\ActiveRecord
     public function getProductStatus()
     {
         return $this->hasOne(ProductStatuses::className(), ['id' => 'product_status_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getShipping()
+    {
+        return $this->hasOne(Shipping::className(), ['id' => 'shipping_id']);
     }
 }
