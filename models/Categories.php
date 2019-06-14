@@ -128,4 +128,30 @@ class Categories extends \yii\db\ActiveRecord
 
         return ArrayHelper::map($row, 'id', 'name');
     }
+
+    public static function getAllCategories($withFormatting = false)
+    {
+        $row = self::find()->all();
+
+        if($withFormatting) {
+            $data = ArrayHelper::toArray($row, [
+                'app\models\Categories' => [
+                    'id',
+                    'name' => function ($category) {
+                        if($category->parent_id) {
+                            return $category->name.' '.Yii::t('admin', '(Parent category: {parentTitle})', [
+                                    'parentTitle' => $category->parentTitle,
+                                ]);
+                        }
+                        else {
+                            return $category->name;
+                        }
+                    },
+                ],
+            ]);
+            return ArrayHelper::map($data, 'id', 'name');
+        }
+
+        return ArrayHelper::map($row, 'id', 'name');
+    }
 }
