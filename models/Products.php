@@ -40,6 +40,17 @@ class Products extends \yii\db\ActiveRecord
         return 'products';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
     /**
      * {@inheritdoc}
      */
@@ -48,11 +59,15 @@ class Products extends \yii\db\ActiveRecord
         return [
             [['name', 'product_status_id'], 'required'],
             [['description'], 'string'],
-            [['product_status_id', 'quantity', 'taxable'], 'integer'],
+            [['product_status_id', 'quantity', 'taxable', 'active', 'shipping_id'], 'integer'],
             [['regular_price', 'discount_price'], 'number'],
-            [['inserted_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['sku', 'name'], 'string', 'max' => 255],
+            ['sku', 'unique'],
             [['product_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductStatuses::className(), 'targetAttribute' => ['product_status_id' => 'id']],
+            //scenarios
+            [['name', 'description'], 'required', 'on' => 'step1'],
+            [['product_status_id'], 'required', 'on' => 'step12'],
         ];
     }
 

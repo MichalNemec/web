@@ -27,6 +27,18 @@ class ProductTags extends \yii\db\ActiveRecord
         return 'product_tags';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */

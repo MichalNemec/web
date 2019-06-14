@@ -28,6 +28,21 @@ class Tags extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function rules()
     {
         return [
