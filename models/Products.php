@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\Html;
 use yii\validators\UniqueValidator;
 
 /**
@@ -185,5 +186,36 @@ class Products extends \yii\db\ActiveRecord
     public function getShipping()
     {
         return $this->hasOne(Shipping::className(), ['id' => 'shipping_id']);
+    }
+
+    public function manageImage($image)
+    {
+        if($image && !$image->error) {
+            return $this->attachImage($image->tempName, 0, $image->name);
+        }
+        return true;
+    }
+
+    public function getPicture($img, $size = null, $clean = false) {
+        $sizes = $img->getSizes();
+        if($size) {
+            //pokud potřebujeme clean verzi obrázku - cesta
+            if($clean) {
+                $path =  "/".$img->getPath($size);
+                return str_replace('\\', '/', $path);
+
+            }
+
+            // pokud je obrázek menší než stanovená size
+            if($sizes['width'] < 500) {
+                $size = $sizes['width'];
+            }
+
+            return Html::img("/".$img->getPath($size), ['class' => 'img-responsive', 'style' => 'margin: 0 auto']);
+        }
+        else {
+            // výchozí výstup
+            return "/".$img->getPathToOrigin();
+        }
     }
 }
