@@ -54,4 +54,13 @@ class ProductSettings extends \yii\db\ActiveRecord
             return $row->value == 'yes' ? true : false;
         }
     }
+
+    public static function getSetting($constant)
+    {
+       $row = self::findOne(['name' => self::SETTING_shippingWeight]);
+       if($row){
+           return $row->value;
+       }
+       return false;
+    }
 }
