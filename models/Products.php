@@ -17,6 +17,7 @@ use yii\validators\UniqueValidator;
  * @property string $name
  * @property string $slug
  * @property string $description
+ * @property int $weight
  * @property string $product_status_id
  * @property string $regular_price
  * @property string $discount_price
@@ -90,7 +91,7 @@ class Products extends \yii\db\ActiveRecord
         return [
             [['name', 'product_status_id'], 'required'],
             [['description'], 'string'],
-            [['product_status_id', 'quantity', 'taxable', 'active', 'shipping_id'], 'integer'],
+            [['product_status_id', 'quantity', 'taxable', 'active', 'shipping_id', 'weight'], 'integer'],
             [['regular_price', 'discount_price'], 'number'],
             [['created_at', 'updated_at', 'slug'], 'safe'],
             [['sku', 'name'], 'string', 'max' => 255],
@@ -120,6 +121,7 @@ class Products extends \yii\db\ActiveRecord
             'name' => Yii::t('model', 'Name'),
             'slug' => Yii::t('model', 'Slug'),
             'description' => Yii::t('model', 'Description'),
+            'weight' => Yii::t('model', 'Weight'),
             'product_status_id' => Yii::t('model', 'Product Status ID'),
             'regular_price' => Yii::t('model', 'Regular Price'),
             'discount_price' => Yii::t('model', 'Discount Price'),
