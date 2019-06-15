@@ -33,3 +33,5 @@ tests/_support/_generated
 /.vagrant
 tests/
 vagrant/
+web/images/store/
+web/images/cache/
