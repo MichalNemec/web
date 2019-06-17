@@ -57,7 +57,7 @@ class ProductSettings extends \yii\db\ActiveRecord
 
     public static function getSetting($constant)
     {
-       $row = self::findOne(['name' => self::SETTING_shippingWeight]);
+       $row = self::findOne(['name' => $constant]);
        if($row){
            return $row->value;
        }
