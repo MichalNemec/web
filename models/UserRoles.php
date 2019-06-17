@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -10,7 +12,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property string $user_id
  * @property string $role_id
- * @property string $inserted_at
+ * @property string $created_at
  * @property string $updated_at
  *
  * @property Users $user
@@ -26,15 +28,27 @@ class UserRoles extends \yii\db\ActiveRecord
         return 'user_roles';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['user_id', 'role_id', 'inserted_at', 'updated_at'], 'required'],
+            [['user_id', 'role_id'], 'required'],
             [['user_id', 'role_id'], 'integer'],
-            [['inserted_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['user_id', 'role_id'], 'unique', 'targetAttribute' => ['user_id', 'role_id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['role_id'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['role_id' => 'id']],
@@ -49,7 +63,7 @@ class UserRoles extends \yii\db\ActiveRecord
         return [
             'user_id' => Yii::t('model', 'User ID'),
             'role_id' => Yii::t('model', 'Role ID'),
-            'inserted_at' => Yii::t('model', 'Inserted At'),
+            'created_at' => Yii::t('model', 'Inserted At'),
             'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
