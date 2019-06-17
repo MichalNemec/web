@@ -36,7 +36,6 @@ use yii\validators\UniqueValidator;
  */
 class Products extends \yii\db\ActiveRecord
 {
-    public $tagsFilled;
     /**
      * {@inheritdoc}
      */
