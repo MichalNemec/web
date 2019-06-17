@@ -53,6 +53,12 @@ class Roles extends \yii\db\ActiveRecord
         return self::find()->all();
     }
 
+    public static function getAllRolesForSelect()
+    {
+        $row = self::find()->where(['!=', 'name', 'superadmin'])->all();
+        return ArrayHelper::map($row, 'id', 'title');
+    }
+
     public static function getAllRoleIds()
     {
         $row = self::find()->select('id')->all();
