@@ -33,6 +33,12 @@ class ProductVariants extends \yii\db\ActiveRecord
         ];
     }
 
+    public function scenarios() {
+        $scenarios = parent::scenarios();
+        $scenarios['variantAddedFromUpdate'] = ['product_id', 'name', 'price'];
+        return $scenarios;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -43,6 +49,10 @@ class ProductVariants extends \yii\db\ActiveRecord
             //[['product_id', 'price'], 'integer'],
             [['name'], 'string', 'max' => 255],
             //[['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Products::className(), 'targetAttribute' => ['product_id' => 'id']],*/
+
+            //scenarios
+            [['product_id'], 'required', 'on' => 'variantAddedFromUpdate'],
+            ['product_id' , 'number', 'on' => 'variantAddedFromUpdate']
         ];
     }
 
