@@ -25,7 +25,8 @@
         "vova07/yii2-imperavi-widget": "*",
         "costa-rico/yii2-images": "dev-master",
         "kartik-v/yii2-widget-fileinput": "dev-master",
-        "2amigos/yii2-file-upload-widget": "~1.0"
+        "2amigos/yii2-file-upload-widget": "~1.0",
+        "dimmitri/yii2-expand-row-column": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "365f0a040a4f02eb05e0f3ae870e2413",
+    "content-hash": "a692d674f8001dfbdc716cb3c2b457f3",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -510,6 +510,43 @@
                 "yii2-images"
             ],
             "time": "2018-07-04T12:53:06+00:00"
+        },
+        {
+            "name": "dimmitri/yii2-expand-row-column",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dimmitri/yii2-expand-row-column.git",
+                "reference": "11a268bfe891e00c7fd00826e59d40178001e2dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dimmitri/yii2-expand-row-column/zipball/11a268bfe891e00c7fd00826e59d40178001e2dc",
+                "reference": "11a268bfe891e00c7fd00826e59d40178001e2dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "yiisoft/yii2": "~2.0.1"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dimmitri\\grid\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Expand row column for the Yii 2.0 GridView widget.",
+            "homepage": "https://github.com/dimmitri/yii2-expand-row-column",
+            "keywords": [
+                "grid",
+                "widget",
+                "yii2"
+            ],
+            "time": "2018-09-16T21:53:11+00:00"
         },
         {
             "name": "doctrine/lexer",
