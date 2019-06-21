@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\admin\components\Helpers\Helpers;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\helpers\ArrayHelper;
@@ -11,6 +12,7 @@ use yii\helpers\Html;
  * This is the model class for table "menu".
  *
  * @property int $id
+ * @property string $subtitle
  * @property string $title
  * @property string $slug
  * @property string $text
@@ -48,10 +50,10 @@ class Menu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'text'], 'required'],
+            [['subtitle', 'title', 'text'], 'required'],
             [['text'], 'string'],
             [['parent_id', 'active', 'linkActive'], 'integer'],
-            [['title', 'slug'], 'string', 'max' => 255],
+            [['subtitle', 'title', 'slug'], 'string', 'max' => 255],
             [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['parent_id' => 'id']],
         ];
     }
@@ -63,6 +65,7 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('model', 'ID'),
+            'subtitle' => Yii::t('model', 'Subtitle'),
             'title' => Yii::t('model', 'Title'),
             'slug' => Yii::t('model', 'Slug'),
             'text' => Yii::t('model', 'Text'),
@@ -112,10 +115,9 @@ class Menu extends \yii\db\ActiveRecord
                 'id',
                 'title',
                 'slug' => function ($menu) {
-                    if($menu->linkActive) {
+                    if ($menu->linkActive) {
                         return $menu->slug;
-                    }
-                    else {
+                    } else {
                         return '#';
                     }
                 },
@@ -126,16 +128,5 @@ class Menu extends \yii\db\ActiveRecord
         ]);
 
         return $data;
-
-        /**
-        <li class="uk-active"><a href="#">Active</a></li>
-        <li class="uk-parent">
-            <a href="#">Parent</a>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-            </ul>
-        </li>
-         */
     }
 }

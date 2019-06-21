@@ -51,6 +51,8 @@ $config = [
                 'admin/'	        =>'admin/default/index',
                 'admin/<controller:\w+>/<action:\w+>'=>'admin/<controller>/<action>',
                 'user/<controller:\w+>/<action:\w+>'=>'user/<controller>/<action>',
+                'page/<slug:[A-Za-z0-9 -_.]+>'=>'page/view',
+                'search/<query>'=>'search/index',
             ],
         ],
         'i18n' => [
@@ -70,6 +72,17 @@ $config = [
             'decimalSeparator' => ',',
             'thousandSeparator' => ' ',
             'currencyCode' => 'EUR',
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'dosamigos\google\maps\MapAsset' => [
+                    'options' => [
+                        'key' => 'AIzaSyDRc739ZTtzh1fafZnuQEXmGXeD8kLjd14',
+                        'language' => 'cs',
+                        'version' => '3.1.18'
+                    ]
+                ]
+            ]
         ],
     ],
     'params' => $params,

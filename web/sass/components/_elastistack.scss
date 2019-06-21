@@ -1,0 +1,102 @@
+.elasticstack {
+  position: relative;
+  margin: 0px auto;
+  padding: 0;
+  width: 100%;
+  height: 350px;
+  list-style: none;
+  perspective: 1000px;
+  perspective-origin: 50% 150%;
+
+  @media(min-width: 640px) {
+    height: 240px;
+  }
+  @media(min-width: 960px) {
+    height: 320px;
+  }
+
+  & p {
+    color: black !important;
+  }
+
+  & h3,
+  & h6 {
+    margin-bottom: 0px;
+  }
+
+  & li {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-width: 60px 20px;
+    border-style: solid;
+    border-color: #fff;
+    background: white;
+    box-shadow: 0 10px 7px -7px rgba(0,0,0,0.12), 0 0 4px rgba(0,0,0,0.1);
+    opacity: 0;
+    cursor: pointer;
+    transform: translate3d(0,0,-180px);
+    transform-style: preserve-3d;
+
+    @media(min-width: 1600px) {
+      height: 320px;
+    }
+
+    &.animate {
+      transition: all 0.3s ease-out;
+    }
+    &.move-back {
+      transition-timing-function: cubic-bezier(0.175, 0.885, 0.470, 1.515);
+    }
+
+    & .uk-grid-margin {
+      @media(max-width: 959px) {
+        margin-top: 0px;
+      }
+    }
+
+    & h3 {
+      font-size: $h3-font-size/2 !important;
+
+      @media(min-width: 1440px) {
+        font-size: $h3-font-size/1.25 !important;
+      }
+
+      @media(min-width: 1600px) {
+        font-size: $h3-font-size !important;
+      }
+    }
+
+    & h6 {
+      font-size: $h6-font-size/2 !important;
+      line-height: 1rem !important;
+
+      @media(min-width: 1440px) {
+        font-size: $h6-font-size/1.25 !important;
+        line-height: $h6-line-height/1.25 !important;
+      }
+
+      @media(min-width: 1600px) {
+        font-size: $h6-font-size !important;
+        line-height: $h6-line-height !important;
+      }
+    }
+  }
+}
+
+.no-js .elasticstack {
+  max-width: 1090px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+
+  & li {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    margin: 10px;
+    cursor: default;
+    transform: translate3d(0,0,0);
+  }
+}

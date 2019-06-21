@@ -1,0 +1,91 @@
+.uk-card {
+  border-radius: $card-border-radius;
+
+  &.uk-card-body {
+    p {
+      font-size: $p-card-font-size !important;
+
+      &.citate {
+        color: $h1-color;
+        font-size: $citate-font-size/2 !important;
+        font-weight: $h1-font-weight;
+        letter-spacing: $h1-letter-spacing;
+        line-height: $citate-line-height/2;
+
+        @media(min-width: 768px) {
+          font-size: $citate-font-size !important;
+          line-height: $citate-line-height;
+        }
+        @media(min-width: 960px) {
+          font-size: $citate-font-size/2 !important;
+          line-height: $citate-line-height/2;
+        }
+
+        @media(min-width: 1600px) {
+          font-size: $citate-font-size !important;
+          line-height: $citate-line-height;
+        }
+      }
+
+      &.citate--author {
+        color: $h3-color;
+        font-size: $h3-font-size/2 !important;
+        font-weight: $h3-font-weight;
+        line-height: 1rem;
+
+        @media(min-width: 768px) {
+          font-size: $h3-font-size !important;
+          line-height: $citate-line-height/2;
+        }
+
+        @media(min-width: 960px) {
+          font-size: $h3-font-size/2 !important;
+          line-height: $citate-line-height/4;
+        }
+
+        @media(min-width: 1600px) {
+          font-size: $h3-font-size !important;
+          line-height: $citate-line-height/2;
+        }
+        
+        span {
+          display: block;
+          color: $p-color;
+        }
+      }
+    }
+  }
+}
+
+.uk-navbar-container {
+  background: $navbar-mobile-background !important;
+
+  & .uk-logo {
+    justify-content: flex-start;
+    & img {
+      width: 50%;
+    }
+  }
+  & .uk-icon {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  & .mobile-menu-text {
+    padding-top: 10px;
+  }
+}
+
+.uk-nav-transparent-divider {
+  margin: 1rem 0;
+}
+
+.uk-tooltip {
+  box-shadow: $tooltip-box-shadow;
+  padding: $tooltip-padding;
+  background: $tooltip-background;
+  border-radius: $tooltip-border-radius;
+  color: $tooltip-color;
+  font-size: $tooltip-font-size;
+}

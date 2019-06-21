@@ -21,39 +21,39 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#cd9446">
+    <link rel="shortcut icon" href="/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#cd9446">
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
+<svg aria-hidden="true" focusable="false" style="width:0;height:0;position:absolute;">
+    <linearGradient id="gradient-horizontal">
+        <stop offset="0%" stop-color="var(--color-stop-1)" />
+        <stop offset="50%" stop-color="var(--color-stop-2)" />
+        <stop offset="100%" stop-color="var(--color-stop-3)" />
+    </linearGradient>
+    <linearGradient id="gradient-vertical" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--color-stop-1)" />
+        <stop offset="50%" stop-color="var(--color-stop-2)" />
+        <stop offset="100%" stop-color="var(--color-stop-3)" />
+    </linearGradient>
+</svg>
 <?php $this->beginBody() ?>
 
 <?= Alert::widget() ?>
 <div class="wrapper">
-    <?= $this->render('_cart-block'); ?>
-    <?= $this->render('_sidenav'); ?>
-    <div uk-height-viewport="expand: true">
-        <div class="main">
-            <div class="container-fluid">
-                <div class="row">
-                    <section class="col-lg-offset-1 col-lg-10 uk-padding-remove-bottom">
-                    <?= Breadcrumbs::widget([
-                        'homeLink' => [
-                            'label' => '<i class="fa fa-home"></i>',
-                            'url' => Yii::$app->homeUrl,
-                        ],
-                        'encodeLabels' => false,
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
-                    </section>
-                </div>
-            </div>
-        </div>
-        <?= $content ?>
-    </div>
-    <div class="main uk-padding-remove">
-        <?= $this->render('_footer'); ?>
-    </div>
+    <?= $this->render('components/_sidenav'); ?>
+    <?= $content ?>
+    <?= $this->render('components/_footer'); ?>
 </div>
 
 

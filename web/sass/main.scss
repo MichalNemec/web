@@ -1,0 +1,130 @@
+$color-main: #9a0404;
+$color-main-hover: rgb(253, 92, 76);;
+
+$font-family: 'Muli', sans-serif;
+$font-family-adv: 'Muli', -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+$font-size-base: 16px;
+
+/** SIDEBAR **/
+$sidebar-width: 320px;
+$sidebar-font-size: 2rem;
+$sidebar-color: black;
+$sidebar-font-weight: 600;
+
+$sidebar-font-size: 1rem;
+$sidebar-link-color: rgb(167, 169, 184);
+$sidebar-link-color-hover: rgb(24, 27, 49);
+$sidebar-line-height: 1.8;
+$sidebar-header-color: black;
+
+
+/** HEADINGS */
+$h6-color: $color-main;//rgb(253, 92, 76);
+$h6-font-size: 1.25rem;
+$h6-font-weight: 400;
+$h6-letter-spacing: 0.125rem;
+$h6-line-height: 1.5rem;
+
+$h1-color: black;
+$h1-font-size: 3.75rem;
+$h1-font-weight: 700;
+$h1-letter-spacing: -0.0375rem;
+$h1-line-height: 4.5rem;
+$h1-span-font-weight: 400;
+
+$h3-color: black;
+$h3-font-size: 1.5rem;
+$h3-font-weight: 700;
+
+$p-color: rgb(128, 130, 145);
+$p-font-size: 1rem;
+$p-font-weight: 600;
+$p-line-height: 1.7rem;
+$p-card-font-size: 1.225rem;
+$card-border-radius: 5px;
+
+$citate-font-size: 3rem;
+$citate-line-height: 3.5rem;
+
+$product-heading-color: white;
+
+
+/** BUTTONS **/
+$primary-first-color: $color-main;//rgb(254, 80, 108);
+$primary-second-color: rgb(252, 106, 42);
+$primary-first-color-hover: $color-main;
+$primary-second-color-hover: rgb(254, 80, 108);
+#gradient-horizontal {
+  --color-stop-1: #9a0404;
+  --color-stop-2: #9a0404;
+  --color-stop-3: rgb(252, 106, 42);
+}
+#gradient-vertical {
+  --color-stop-1: #9a0404;
+  --color-stop-2: #9a0404;
+  --color-stop-3: rgb(252, 106, 42);
+}
+$button-padding: 1rem 2.875rem;
+$button-small-padding: 0.5rem 1.875rem;
+$button-primary-gradient: linear-gradient(to right, $primary-first-color 0%, $primary-second-color 100%);
+$button-primary-gradient-opacity: linear-gradient(to right, rgba($primary-first-color, 0.8) 0%, rgba($primary-second-color, 0.8) 100%);
+$button-primary-border: rgb(254, 80, 108);
+$button-primary-box-shadow: 0px 5px 35px -1px rgba(254,80,108,0.25);
+
+$button-primary-hover: linear-gradient(to right, $primary-first-color-hover 0%, $primary-second-color-hover 100%);
+$button-primary-color: white;
+$button-primary-color-hover: white;
+
+/** IMAGES **/
+$image-border-radius: 5px;
+
+/** NAVBAR **/
+$navbar-mobile-background: white;
+$offcanvas-background: white;
+$offcanvas-hot-links-color: #333;
+
+/** TOOLTIP **/
+$tooltip-padding: 1rem 1rem;
+$tooltip-box-shadow: 0px 0px 16px black;
+$tooltip-background: black;
+$tooltip-border-radius: 5px;
+$tooltip-color: white;
+$tooltip-font-size: 1rem;
+
+
+@import "components/helpers";
+@import "components/basic";
+@import "components/section";
+@import "components/anims";
+@import "components/uk";
+@import "components/sidenav";
+@import "components/pace";
+@import "components/elastistack";
+
+::selection {
+  background-color: rgba($color-main, 0.4);
+}
+
+::-webkit-scrollbar {
+  width: 0.5vw;
+  background: transparent;
+  z-index: 10;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 1vh;
+}
+
+@media (max-width: 480px) {
+  ::-webkit-scrollbar {
+    width: 1vh;
+  }
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-main;
+}
