@@ -35,3 +35,4 @@ tests/
 vagrant/
 web/images/store/
 web/images/cache/
+node_modules/
